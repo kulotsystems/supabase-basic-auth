@@ -1,21 +1,24 @@
-import { useState } from 'react';
 import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar.jsx';
+
+// pages
+import Home from './pages/Home.jsx';
+import Auth from './pages/Auth.jsx';
+
 
 function App() {
-    const [count, setCount] = useState(0);
 
     return (
-        <div className="App">
-            <h1>Supabase Basic Auth</h1>
-            <div className="card">
-                <button onClick={ () => setCount((count) => count + 1) }>
-                    count is { count }
-                </button>
-                <p>
-                    Edit <code>src/App.jsx</code> and save to test HMR
-                </p>
+        <BrowserRouter>
+            <div className="App">
+                <Navbar/>
+                <Routes>
+                    <Route path='/' element={<Home/>}/>
+                    <Route path='/auth' element={<Auth/>}/>
+                </Routes>
             </div>
-        </div>
+        </BrowserRouter>
     )
 }
 
